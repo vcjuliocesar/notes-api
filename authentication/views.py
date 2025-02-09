@@ -40,11 +40,11 @@ def register(request):
         if not serializer.is_valid():
 
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
+        
+       
         serializer.save()
-
         user = User.objects.get(username=request.data["username"])
-        user.set_password(serializer.data["password"])
+        user.set_password(request.data["password"])
         user.save()
 
         token = Token.objects.create(user=user)
