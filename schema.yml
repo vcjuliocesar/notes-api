@@ -1,0 +1,111 @@
+openapi: 3.0.3
+info:
+  title: null
+  version: ''
+paths:
+  /api/v1/destroy/notes/{note_id}/:
+    delete:
+      operationId: destroy_notes_destroy
+      parameters:
+      - in: path
+        name: note_id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - destroy
+      security:
+      - tokenAuth: []
+      responses:
+        '204':
+          description: No response body
+  /api/v1/index/notes/:
+    get:
+      operationId: index_notes_retrieve
+      tags:
+      - index
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          description: No response body
+  /api/v1/login/:
+    post:
+      operationId: login_create
+      tags:
+      - login
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          description: No response body
+  /api/v1/register/:
+    post:
+      operationId: register_create
+      tags:
+      - register
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          description: No response body
+  /api/v1/show/notes/{note_id}/:
+    get:
+      operationId: show_notes_retrieve
+      parameters:
+      - in: path
+        name: note_id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - show
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          description: No response body
+  /api/v1/store/notes/:
+    post:
+      operationId: store_notes_create
+      tags:
+      - store
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          description: No response body
+  /api/v1/update/notes/{note_id}/:
+    put:
+      operationId: update_notes_update
+      parameters:
+      - in: path
+        name: note_id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - update
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          description: No response body
+components:
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+    cookieAuth:
+      type: apiKey
+      in: cookie
+      name: sessionid
+    tokenAuth:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: Token-based authentication with required prefix "Token"
